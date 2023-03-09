@@ -1,0 +1,45 @@
+    distances = {}
+for (let i of [INV.SWORD_WOOD , INV.SWORD , INV.SWORD_GOLD , INV.SWORD_DIAMOND , INV.SWORD_AMETHYST , INV.REIDITE_SWORD , INV.DRAGON_SWORD , INV.LAVA_SWORD , INV.PIRATE_SWORD]) {
+    distances[i] = 125
+} /// swords and their distances
+for (let i of [INV.WOOD_SPEAR, INV.STONE_SPEAR, INV.GOLD_SPEAR, INV.DIAMOND_SPEAR, INV.AMETHYST_SPEAR, INV.REIDITE_SPEAR]) {
+    distances[i] = 200
+} /// spears and their distances
+////
+    
+function message(e) {
+        if (typeof (e.data != "string")) {
+            let ui8 = new Uint8Array(e.data);
+            switch (ui8[0]) {
+                case 0:
+        if(aimbot_b) aimbot()
+        else {
+            if(attacking) {
+            attacking = false
+            client.stop_attack()
+            }
+        }
+
+    function aimbot() {
+        let weapon = world.units[0].filter(e => e.pid == user.id)[0]?.info
+        if (world.units[0].filter(e => e.pid != user.id && !user.team.includes(e.pid)).filter(e => Utils.dist(world.units[0].filter(e => e.pid == user.id)[0]?.r, e?.r) < distances[weapon])[0]?.r && distances[weapon]) {
+            if(!attacking) attacking = true
+            let player = Object.values(world.units[0].filter(e => e.pid == user.id)[0].r)
+            let enemy = Object.values(world.units[0].filter(e => e.pid != user.id && !user.team.includes(e.pid)).filter(e => Utils.dist(world.units[0].filter(e => e.pid == user.id)[0].r, e.r) < distances[weapon])[0].r)
+            client.send_attack(Utils.get_angle_2(...player, ...enemy))
+        }
+        else {
+            if(attacking) {
+            attacking = false
+            client.stop_attack()
+            }
+        }
+    }
+    distances = {}
+for (let i of [INV.SWORD_WOOD , INV.SWORD , INV.SWORD_GOLD , INV.SWORD_DIAMOND , INV.SWORD_AMETHYST , INV.REIDITE_SWORD , INV.DRAGON_SWORD , INV.LAVA_SWORD , INV.PIRATE_SWORD]) {
+    distances[i] = 125
+} /// swords and their distances
+for (let i of [INV.WOOD_SPEAR, INV.STONE_SPEAR, INV.GOLD_SPEAR, INV.DIAMOND_SPEAR, INV.AMETHYST_SPEAR, INV.REIDITE_SPEAR]) {
+    distances[i] = 200
+} /// spears and their distances
+////
