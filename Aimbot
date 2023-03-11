@@ -1,3 +1,4 @@
+///***This code is made by XKotori
     distances = {}
 for (let i of [INV.SWORD_WOOD , INV.SWORD , INV.SWORD_GOLD , INV.SWORD_DIAMOND , INV.SWORD_AMETHYST , INV.REIDITE_SWORD , INV.DRAGON_SWORD , INV.LAVA_SWORD , INV.PIRATE_SWORD]) {
     distances[i] = 125
